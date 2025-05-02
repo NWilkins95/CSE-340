@@ -111,7 +111,6 @@ nav ul li {
   background-color: rgba(255, 255, 255, 0.85);
   width: 33%;
   height: auto;
-  max-width: 200px;
   margin-left: 0.3rem;
   box-sizing: border-box;
   color: var(--accent-color);
@@ -120,7 +119,7 @@ nav ul li {
 .overlay-content h2 {
   text-align: left;
   margin: 0;
-  font-size: 1rem;
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
   font-weight: 800;
   padding: 0.2rem 0;
 }
@@ -130,7 +129,7 @@ nav ul li {
   margin: 0;
   padding: 0;
   text-align: left;
-  font-size: 0.8rem;
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
   font-weight: 600;
 }
 
