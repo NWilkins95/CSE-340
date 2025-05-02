@@ -12,6 +12,7 @@ body {
 
 #wrapper {
   margin: 0 auto;
+  padding: 0.7rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,6 +70,10 @@ nav ul li {
   padding: 1.6rem 0;
 }
 
+#welcome-heading {
+  font-size: clamp(0.7rem, 5vw, 2.4rem);
+}
+
 #featured-vehicle {
   width: 100%;
 }
@@ -106,8 +111,11 @@ nav ul li {
 
 }
 
-#welcome-heading {
-  font-size: clamp(0.7rem, 5vw, 2.4rem);
+footer {
+  width: 100%;
+  margin-left: 0;
+  margin-bottom: 0;
+  font-size: 0.9rem;
 }
 
 @media screen and (min-width: 700px) {
