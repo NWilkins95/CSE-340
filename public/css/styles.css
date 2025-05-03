@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+/* ==========================================================================
+  Section: Universal Styles (header, footer, navigation, etc.)
+  --------------------------------------------------------------------------
+  This section contains all universal styles for the site.
+  ==========================================================================
+*/
+
 :root {
   --accent-color: #4d96d7;
   --main-background-color: white;
@@ -13,7 +20,7 @@
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
-  min-width: 350px;
+  min-width: 360px;
   background-color: var(--main-background-color);
 }
 
@@ -48,7 +55,7 @@ main {
 }
 
 #tools a {
-  font-size: clamp(0.7rem, 5vw, 1.3rem);
+  font-size: clamp(1.13rem, 5vw, 1.3rem);
   text-decoration: none;
   color: black;
 }
@@ -56,7 +63,7 @@ main {
 nav {
   color: white;
   background-color: black;
-  font-size: clamp(0.7rem, 5vw, 1.5rem);
+  font-size: clamp(1.13rem, 5vw, 1.5rem);
   font-weight: 500;
   width: 100%;
   margin: 0 2rem;
@@ -77,8 +84,24 @@ nav ul li {
   padding: 1.6rem 0;
 }
 
+footer {
+  width: 100%;
+  margin-left: 0;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+  Section: index.js
+  --------------------------------------------------------------------------
+  This section contains styles specifically used in the index.js file.
+  Add or modify styles here to affect components and elements rendered by
+  index.js.
+  ==========================================================================
+*/
+
 #welcome-heading {
-  font-size: clamp(0.7rem, 5vw, 2.4rem);
+  font-size: clamp(1.13rem, 5vw, 2.4rem);
 }
 
 #featured-vehicle {
@@ -103,42 +126,52 @@ nav ul li {
 
 .overlay-content {
   position: absolute;
-  display: flex;
+  display: inline-flex; 
   flex-direction: column;
   top: 50%;
-  left: 0%;
+  left: 0;
   transform: translateY(-50%);
   background-color: rgba(255, 255, 255, 0.85);
-  width: 33%;
-  height: auto;
+  height: 75%;
   margin-left: 0.3rem;
   box-sizing: border-box;
+  justify-content: space-between;
   color: var(--accent-color);
+  width: 40%;
+  max-width: 200px;
+  min-width: 130px;
 }
 
 .overlay-content h2 {
   text-align: left;
   margin: 0;
-  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-size: clamp(1rem, 4vw, 1.6rem);
   font-weight: 800;
   padding: 0.2rem 0;
+  white-space: nowrap; 
+  width: max-content;
 }
 
 .overlay-content ul {
   list-style-type: none;
   margin: 0;
+  margin-top: 0.2rem;
   padding: 0;
   text-align: left;
-  font-size: clamp(0.8rem, 2vw, 1.2rem);
-  font-weight: 600;
+  font-size: clamp(0.8rem, 3vw, 1.3rem);
+  font-weight: 600;;
+  width: auto; 
+  max-width: 100%;
 }
 
 .overlay-content ul li {
-  padding: 0.05rem 0;
+  padding: 0.2rem 0;
+  width: auto;
 }
 
 #overlay-content-button img {
-  width: 80%;
+  width: 75%;
+  max-width: 200px;
   margin-top: 0.2rem;
   background-color: var(--accent-color);
 }
@@ -164,7 +197,7 @@ nav ul li {
 #review-section ul {
   padding-left: 1rem;
   margin: 0;
-  font-size: clamp(0.7rem, 3vw, 1.2rem);
+  font-size: clamp(0.85rem, 3vw, 1.2rem);
 }
 
 #review-section ul li {
@@ -178,7 +211,7 @@ nav ul li {
   left: 0;
   margin-bottom: 0.5rem;
   margin-top: 1.5rem;
-  font-size: clamp(0.7rem, 5vw, 2.4rem);
+  font-size: clamp(1.13rem, 5vw, 2.4rem);
 }
 
 #upgrade-grid {
@@ -224,12 +257,12 @@ nav ul li {
   margin: 0;
 }
 
-footer {
-  width: 100%;
-  margin-left: 0;
-  margin-bottom: 0;
-  font-size: 0.9rem;
-}
+/* ==========================================================================
+  Section: Media Queries
+  --------------------------------------------------------------------------
+  This section contains styles specifically used in the media queries.
+  ==========================================================================
+*/
 
 @media screen and (min-width: 650px) {
   body {
@@ -246,9 +279,26 @@ footer {
     box-shadow: 0rem 0rem 0.2rem 0.9rem var(--accent-color);
     border-radius: 10px;
   }
+
+  .overlay-content {
+    width: 30%;
+    min-width: 176px;
+    min-height: 176px;
+    margin-left: 0.3rem;
+  }
 }
 
 @media screen and (min-width: 1100px) {
+  .overlay-content {
+    width: 25%;
+    left: 7%;
+    height: 80%;
+  }
+
+  .overlay-content ul {
+    margin-bottom: 2rem;
+  }
+
   #upgrade-and-review-container {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
