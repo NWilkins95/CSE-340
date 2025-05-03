@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap');
 /******* Change Box Model ***************/
 *,
 *:before,
@@ -15,11 +16,14 @@
 :root {
   --accent-color: #4d96d7;
   --main-background-color: white;
+  --main-font: 'Roboto', Arial, sans-serif;
+  --secondary-font: 'Space Grotesk', Arial, sans-serif;
+  --tech-font: 'Quantico', Arial, sans-serif;
 }
 
 body {
   margin: 0 auto;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--main-font);
   min-width: 360px;
   background-color: var(--main-background-color);
 }
@@ -50,12 +54,14 @@ main {
 .siteName a {
   font-size: clamp(2rem, 5vw, 3rem);
   text-decoration: none;
+  font-family: var(--main-font);
   font-weight: 600;
   color: black
 }
 
 #tools a {
   font-size: clamp(1.13rem, 5vw, 1.3rem);
+  font-family: var(--tech-font);
   text-decoration: none;
   color: black;
 }
@@ -64,6 +70,7 @@ nav {
   color: white;
   background-color: black;
   font-size: clamp(1.13rem, 5vw, 1.5rem);
+  font-family: var(--main-font);
   font-weight: 500;
   width: 100%;
   margin: 0 2rem;
@@ -102,6 +109,7 @@ footer {
 
 #welcome-heading {
   font-size: clamp(1.13rem, 5vw, 2.4rem);
+  font-family: var(--secondary-font);
 }
 
 #featured-vehicle {
@@ -146,7 +154,7 @@ footer {
   text-align: left;
   margin: 0;
   font-size: clamp(1rem, 4vw, 1.6rem);
-  font-weight: 800;
+  font-family: var(--tech-font);
   padding: 0.2rem 0;
   white-space: nowrap; 
   width: max-content;
@@ -159,13 +167,14 @@ footer {
   padding: 0;
   text-align: left;
   font-size: clamp(0.8rem, 3vw, 1.3rem);
-  font-weight: 600;;
+  font-family: var(--tech-font);
+  font-weight: 600;
   width: auto; 
   max-width: 100%;
 }
 
 .overlay-content ul li {
-  padding: 0.2rem 0;
+  padding: 0.1rem 0;
   width: auto;
 }
 
@@ -198,6 +207,7 @@ footer {
   padding-left: 1rem;
   margin: 0;
   font-size: clamp(0.85rem, 3vw, 1.2rem);
+  font-family: var(--main-font);
 }
 
 #review-section ul li {
@@ -212,6 +222,7 @@ footer {
   margin-bottom: 0.5rem;
   margin-top: 1.5rem;
   font-size: clamp(1.13rem, 5vw, 2.4rem);
+  font-family: var(--main-font);
 }
 
 #upgrade-grid {
@@ -250,6 +261,7 @@ footer {
 .grid-item-caption {
   text-align: center;
   font-size: clamp(0.7rem, 4vw, 1.0rem);
+  font-family: var(--tech-font);
   font-weight: 600;
   background-color: var(--main-background-color);
   width: 100%;
