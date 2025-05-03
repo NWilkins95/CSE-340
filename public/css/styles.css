@@ -4,3 +4,335 @@
 *:after {
   box-sizing: border-box;
 }
+
+/* ==========================================================================
+  Section: Universal Styles (header, footer, navigation, etc.)
+  --------------------------------------------------------------------------
+  This section contains all universal styles for the site.
+  ==========================================================================
+*/
+
+:root {
+  --accent-color: #4d96d7;
+  --main-background-color: white;
+}
+
+body {
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  min-width: 360px;
+  background-color: var(--main-background-color);
+}
+
+#wrapper {
+  margin: 0 auto;
+  padding: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--main-background-color);
+}
+
+main {
+  width: 100%;
+}
+
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 2.4rem 0;
+  width: 100%;
+}
+
+.siteName a {
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-decoration: none;
+  font-weight: 600;
+  color: black
+}
+
+#tools a {
+  font-size: clamp(1.13rem, 5vw, 1.3rem);
+  text-decoration: none;
+  color: black;
+}
+
+nav {
+  color: white;
+  background-color: black;
+  font-size: clamp(1.13rem, 5vw, 1.5rem);
+  font-weight: 500;
+  width: 100%;
+  margin: 0 2rem;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+nav ul li {
+  cursor: pointer;
+  text-align: center;
+  padding: 1.6rem 0;
+}
+
+footer {
+  width: 100%;
+  margin-left: 0;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+  Section: index.js
+  --------------------------------------------------------------------------
+  This section contains styles specifically used in the index.js file.
+  Add or modify styles here to affect components and elements rendered by
+  index.js.
+  ==========================================================================
+*/
+
+#welcome-heading {
+  font-size: clamp(1.13rem, 5vw, 2.4rem);
+}
+
+#featured-vehicle {
+  width: 100%;
+}
+
+.feature-content {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.feature-content .background img {
+  width: 100%;
+  max-width: 750px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.overlay-content {
+  position: absolute;
+  display: inline-flex; 
+  flex-direction: column;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.85);
+  height: 75%;
+  margin-left: 0.3rem;
+  box-sizing: border-box;
+  justify-content: space-between;
+  color: var(--accent-color);
+  width: 40%;
+  max-width: 200px;
+  min-width: 130px;
+}
+
+.overlay-content h2 {
+  text-align: left;
+  margin: 0;
+  font-size: clamp(1rem, 4vw, 1.6rem);
+  font-weight: 800;
+  padding: 0.2rem 0;
+  white-space: nowrap; 
+  width: max-content;
+}
+
+.overlay-content ul {
+  list-style-type: none;
+  margin: 0;
+  margin-top: 0.2rem;
+  padding: 0;
+  text-align: left;
+  font-size: clamp(0.8rem, 3vw, 1.3rem);
+  font-weight: 600;;
+  width: auto; 
+  max-width: 100%;
+}
+
+.overlay-content ul li {
+  padding: 0.2rem 0;
+  width: auto;
+}
+
+#overlay-content-button img {
+  width: 75%;
+  max-width: 200px;
+  margin-top: 0.2rem;
+  background-color: var(--accent-color);
+}
+
+#upgrade-and-review-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  width: 100%;
+  padding: 0;
+}
+
+#upgrade-section {
+  width: 100%;
+  grid-row: 2/3;
+}
+
+#review-section {
+  width: 100%;
+  grid-row: 1/2;
+}
+
+#review-section ul {
+  padding-left: 1rem;
+  margin: 0;
+  font-size: clamp(0.85rem, 3vw, 1.2rem);
+}
+
+#review-section ul li {
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+#upgrade-and-review-container h2 {
+  text-align: left;
+  width: 100%;
+  left: 0;
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
+  font-size: clamp(1.13rem, 5vw, 2.4rem);
+}
+
+#upgrade-grid {
+  list-style: none;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-column-gap: 0.5rem;
+  padding: 0;
+  margin: 0 auto;
+  margin-top: 1rem;
+  width: 100%;
+
+}
+
+.upgrade-grid-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 1fr;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  background-color: var(--accent-color);
+}
+
+.upgrade-grid-item img {
+  display: block;
+  max-width: 100%;
+  border-radius: 10px;
+  align-self: center;
+  justify-self: center;
+}
+
+.grid-item-caption {
+  text-align: center;
+  font-size: clamp(0.7rem, 4vw, 1.0rem);
+  font-weight: 600;
+  background-color: var(--main-background-color);
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+/* ==========================================================================
+  Section: Media Queries
+  --------------------------------------------------------------------------
+  This section contains styles specifically used in the media queries.
+  ==========================================================================
+*/
+
+@media screen and (min-width: 650px) {
+  body {
+    background-image: url(../images/site/checkerboard.jpg);
+    background-repeat: repeat;
+    background-size: 750px 750px; /* or set to something like 100px 100px if needed */
+  }
+
+  #wrapper {
+    width: 75%;
+    max-width: 1000px;
+    padding: 2rem;
+    margin: 2rem auto;
+    box-shadow: 0rem 0rem 0.2rem 0.9rem var(--accent-color);
+    border-radius: 10px;
+  }
+
+  .overlay-content {
+    width: 30%;
+    min-width: 176px;
+    min-height: 176px;
+    margin-left: 0.3rem;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .overlay-content {
+    width: 25%;
+    left: 7%;
+    height: 80%;
+  }
+
+  .overlay-content ul {
+    margin-bottom: 2rem;
+  }
+
+  #upgrade-and-review-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 2rem;
+    margin-top: 5rem;
+  }
+
+  #upgrade-section {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+
+  #upgrade-grid {
+   margin-left: 0;
+   row-gap: 2rem;
+  }
+
+  #review-section {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    top: 0;
+  }
+
+  #upgrade-and-review-container h2 {
+    margin-top: 0;
+    font-size: 1.9rem;
+    margin-bottom: 3rem;
+  }
+
+  #review-section ul li {
+    padding: 1.25rem 0;
+  }
+
+  footer {
+    font-size: 1rem;
+  };
+}
