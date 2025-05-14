@@ -1,0 +1,25 @@
+<!--
+    The following EJS template code checks if a 'title' variable is present.
+    - If 'title' exists, it renders it inside an <h1> tag.
+    - If 'title' is not present, it attempts to redirect the user to the homepage ('/').
+-->
+
+<% if (title) { %>
+<h1 id="classification-title"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- 
+    This line is an EJS (Embedded JavaScript) comment that references a helper functioncalled `messages()`. 
+    If uncommented and used, it would render flash messages or notifications to the user interface.
+    Currently, as an EJS comment (`<%# ... %>`), it is ignored during template rendering and does not produce any output in the HTML.
+-->
+
+<%# messages() %>
+
+<!--
+    The following EJS code block is used to render the grid of vehicles.
+-->
+
+<%- grid %>
