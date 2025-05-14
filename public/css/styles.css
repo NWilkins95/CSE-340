@@ -277,6 +277,67 @@ footer {
 }
 
 /* ==========================================================================
+  Section: Inventory Pages
+  --------------------------------------------------------------------------
+  This section contains styles specifically used in the inventory classification pages.
+  ==========================================================================
+*/
+
+#classification-title {
+  font-size: clamp(1.13rem, 5vw, 2.4rem);
+  font-family: var(--main-font);
+}
+
+#inv-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  list-style: none;
+}
+
+#inv-display li {
+  border: solid 1px black;
+  border-radius: 10px;
+  max-width: 200px;
+  height: 270px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 150px 120px;
+  margin: 1rem 0;
+}
+
+#inv-display li img {
+  display: block;
+  max-width: 100%;
+  border-radius: 10px;
+  justify-self: center;
+}
+
+.namePrice {
+  text-align: center;
+}
+
+.namePrice hr {
+  border-top: solid 5px black;
+}
+
+.namePrice h2 {
+  font-size: 1.15rem;
+  font-family: var(--tech-font);
+  font-weight: 700;
+}
+
+.namePrice span {
+  font-size: 1rem;
+  font-family: var(--tech-font);
+  font-weight: 600;
+}
+
+
+
+/* ==========================================================================
   Section: Media Queries
   --------------------------------------------------------------------------
   This section contains styles specifically used in the media queries.
@@ -304,6 +365,12 @@ footer {
     min-width: 176px;
     min-height: 176px;
     margin-left: 0.3rem;
+  }
+
+  #inv-display {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 }
 
