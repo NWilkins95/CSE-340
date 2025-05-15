@@ -335,7 +335,22 @@ footer {
   font-weight: 600;
 }
 
+/* ==========================================================================
+  Section: Error Styles
+  --------------------------------------------------------------------------
+  This section contains styles specifically used in error pages.
+  ==========================================================================
+*/
 
+#error-page-title {
+  font-family: var(--main-font);
+}
+
+#error-page-message {
+  font-family: var(--tech-font);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
 
 /* ==========================================================================
   Section: Media Queries
