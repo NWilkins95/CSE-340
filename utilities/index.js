@@ -64,7 +64,7 @@ Util.buildInventoryDetail = async function(data){
   let vehicle = '<div id="inv-detail">'
   vehicle += '<div class="detail-image">'
   vehicle += '<img src="' + data.inv_image + '" alt="Image of ' 
-  + data.inv_make + ' ' + data.inv_model + ' on CSE Motors" />'
+  + data.inv_make + ' ' + data.inv_model + ' on CSE Motors" >'
   vehicle += '</div>'
   vehicle += '<div class="detail-info">'
   vehicle += '<h2>Vehicle Information</h2>'
