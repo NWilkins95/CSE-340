@@ -67,7 +67,7 @@ Util.buildInventoryDetail = async function(data){
   + data.inv_make + ' ' + data.inv_model + ' on CSE Motors" >'
   vehicle += '</div>'
   vehicle += '<div class="detail-info">'
-  vehicle += '<h3>' + data.inv_make + ' ' + data.inv_model + ' ' +  'Details</h2>'
+  vehicle += '<h3>' + data.inv_make + ' ' + data.inv_model + ' ' +  'Details</h3>'
   vehicle += '<p class="detail-price detail-item"><strong>Price:</strong> $' 
   + new Intl.NumberFormat('en-US').format(data.inv_price) + '</p>'
   vehicle += '<p class="detail-color detail-item"><strong>Color:</strong> ' + data.inv_color + '</p>'
