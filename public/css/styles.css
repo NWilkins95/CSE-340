@@ -277,7 +277,7 @@ footer {
 }
 
 /* ==========================================================================
-  Section: Inventory Pages
+  Section: Inventory Classification Pages
   --------------------------------------------------------------------------
   This section contains styles specifically used in the inventory classification pages.
   ==========================================================================
@@ -333,6 +333,34 @@ footer {
   font-size: 1rem;
   font-family: var(--tech-font);
   font-weight: 600;
+}
+
+/* ==========================================================================
+  Section: Inventory Detail Pages
+  --------------------------------------------------------------------------
+  This section contains styles specifically used in the inventory detail pages.
+  ==========================================================================
+*/
+
+#inv-detail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.detail-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.detail-item{
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.detail-price, .detail-mileage {
+  background-color: #f7f7f7;
 }
 
 /* ==========================================================================
