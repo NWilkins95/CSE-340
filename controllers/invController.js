@@ -19,4 +19,28 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Build vehicle detail view
+ * ************************** */
+invCont.buildByInventoryId = async function (req, res, next) {
+  const inventory_id = req.params.inv_id
+  const data = await invModel.getInventoryById(inventory_id)
+  const vehicle = await utilities.buildInventoryDetail(data)
+  let nav = await utilities.getNav()
+  res.render("./inventory/vehicle", {
+    title: data.inv_make + " " + data.inv_model,
+    nav,
+    vehicle,
+  })
+}
+
+/* ***************************
+ *  Handle intentional footer error
+ * ************************** */
+invCont.footerError = (req, res, next) => {
+  const err = new Error("Intentional footer error")
+  err.status = 500
+  throw err
+}
+
 module.exports = invCont
