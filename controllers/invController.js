@@ -34,4 +34,13 @@ invCont.buildByInventoryId = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Handle intentional footer error
+ * ************************** */
+invCont.footerError = (req, res, next) => {
+  const err = new Error("Intentional footer error")
+  err.status = 500
+  throw err
+}
+
 module.exports = invCont
