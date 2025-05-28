@@ -13,6 +13,7 @@ const static = require("./routes/static")
 const utilities = require("./utilities/")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
+const accountRoute = require("./routes/accountRoute")
 const session = require("express-session")
 const pool = require('./database/')
 
@@ -51,6 +52,9 @@ app.use(utilities.handleErrors(static))
 
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
+
+// Account route
+app.use("/account", utilities.handleErrors(accountRoute))
 
 // Inventory route
 app.use("/inv", utilities.handleErrors(inventoryRoute))
