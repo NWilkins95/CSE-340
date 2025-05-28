@@ -5,7 +5,7 @@
 -->
 
 <% if (title) { %>
-<h1 id="login-title"><%= title %></h1>
+<h1 id="register-title"><%= title %></h1>
 <% } else {
   res.redirect('/')
 } %>
@@ -17,19 +17,25 @@
 <% messages() %>
 
 <!-- 
-    The following HTML code creates a login form for users to enter their email and password.
+    The following HTML code creates a registration form for users to enter their first name, last name, email, and password.
     It includes labels, input fields, and a submit button.
 -->
-
-<form id="login-form" action="/account/login" method="post">
+    
+<form id="register-form" action="/account/login" method="post">
     <fieldset>
+        <label class="form-field" for="fName">First Name:
+            <input class="form-textbox" type="text" name="account_firstname" id="fName" required placeholder="Enter your first name">
+        </label>
+        <label class="form-field" for="lName">Last Name:
+            <input class="form-textbox" type="text" name="account_lastname" id="lName" required placeholder="Enter your last name">
+        </label>
         <label class="form-field" for="username">Email:
             <input class="form-textbox" type="email" name="account_email" id="username" required placeholder="Enter your email address">
         </label>
         <label class="form-field" for="password">Password:
             <input class="form-textbox" type="password" name="account_password" id="password" required placeholder="Enter your password">
         </label>
-        <input class="submit-button" type="submit" value="LOGIN">
-        <p id="register-message">No account? <a href="/account/register">Sign-up</a></p>     
+        <input class="submit-button" type="submit" value="Register">
+        <p id="register-message">Already Registered? <a href="/account/login">Login</a></p>     
     </fieldset>
 </form>
