@@ -11,12 +11,10 @@
 } %>
 
 <!-- 
-    This line is an EJS (Embedded JavaScript) comment that references a helper functioncalled `messages()`. 
-    If uncommented and used, it would render flash messages or notifications to the user interface.
-    Currently, as an EJS comment (`<%# ... %>`), it is ignored during template rendering and does not produce any output in the HTML.
+    This line is an EJS (Embedded JavaScript) comment that renders flash messages or notifications to the user interface.
 -->
 
-<%# messages() %>
+<% messages() %>
 
 <!--
     The following EJS code block is used to render the grid of vehicles.

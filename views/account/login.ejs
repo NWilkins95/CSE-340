@@ -1,0 +1,35 @@
+<!--
+    The following EJS template code checks if a 'title' variable is present.
+    - If 'title' exists, it renders it inside an <h1> tag.
+    - If 'title' is not present, it attempts to redirect the user to the homepage ('/').
+-->
+
+<% if (title) { %>
+<h1 id="login-title"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- 
+    This line is an EJS (Embedded JavaScript) comment that renders flash messages or notifications to the user interface.
+-->
+
+<% messages() %>
+
+<!-- 
+    The following HTML code creates a login form for users to enter their email and password.
+    It includes labels, input fields, and a submit button.
+-->
+
+<form id="login-form" action="/account/login" method="post">
+    <fieldset>
+        <label class="login-form-field" for="username">Email:
+            <input class="login-form-textbox" type="email" name="account_email" id="username" required placeholder="Enter your email address">
+        </label>
+        <label class="login-form-field" for="password">Password:
+            <input class="login-form-textbox" type="password" name="account_password" id="password" required placeholder="Enter your password">
+        </label>
+        <input class="submit-button" type="submit" value="LOGIN">
+        <p id="register-message">No account? <a href="/account/register">Sign-up</a></p>     
+    </fieldset>
+</form>
