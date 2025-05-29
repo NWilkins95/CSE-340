@@ -337,6 +337,12 @@ footer {
   font-size: 1rem;
 }
 
+#password-pattern-message {
+  font-size: 0.8rem;
+  color: white;
+  margin-top: 0.5rem;
+}
+
 .submit-button {
   width: 25%;
   min-width: 80px;

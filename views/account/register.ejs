@@ -33,7 +33,8 @@
             <input class="form-textbox" type="email" name="account_email" id="username" required placeholder="Enter your email address">
         </label>
         <label class="form-field" for="password">Password:
-            <input class="form-textbox" type="password" name="account_password" id="password" required placeholder="Enter your password">
+            <input class="form-textbox" type="password" name="account_password" id="password" required placeholder="Enter your password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+            <span id="password-pattern-message">Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character.</span> 
         </label>
         <input class="submit-button" type="submit" value="Register">
         <p id="register-message">Already Registered? <a href="/account/login">Login</a></p>     
