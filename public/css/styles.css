@@ -339,6 +339,7 @@ footer {
 
 #password-pattern-message {
   font-size: 0.8rem;
+  font-style: italic;
   color: white;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
