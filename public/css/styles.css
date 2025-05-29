@@ -16,6 +16,9 @@
 :root {
   --accent-color: #4d96d7;
   --main-background-color: white;
+  --form-border-color: #8d7d74;
+  --form-pad-color: #add8e6;
+  --form-background-color: #32475c;
   --tech-font: 'Quantico', 'Roboto', Arial, sans-serif;
   --secondary-font: 'Space Grotesk', 'Roboto', Arial, sans-serif;
 }
@@ -106,6 +109,13 @@ footer {
   margin-bottom: 0;
   font-size: 0.9rem;
   font-family: var(--secondary-font);
+}
+
+.notice {
+  font-style: italic;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: red;
 }
 
 /* ==========================================================================
@@ -277,6 +287,85 @@ footer {
   width: 100%;
   height: 100%;
   margin: 0;
+}
+
+/* ==========================================================================
+  Section: Login and Registration Pages
+  --------------------------------------------------------------------------
+  This section contains styles specifically used in the login and registration pages.
+  ==========================================================================
+*/
+
+#login-form, #register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  background-color: var(--form-pad-color);
+  font-family: var(--tech-font);
+}
+
+#login-form fieldset, #register-form fieldset {
+  width: 80%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--form-background-color);
+  border: 5px solid var(--form-border-color);
+  border-radius: 10px;
+  color: white;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.form-textbox {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border-radius: 5px;
+  border: solid 1px var(--form-border-color);
+  font-family: var(--tech-font);
+  font-size: 1rem;
+}
+
+#password-pattern-message {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: white;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.submit-button {
+  width: 25%;
+  min-width: 80px;
+  padding: 0.5rem;
+  border: 1px solid var(--form-border-color);
+  border-radius: 5px;
+  font-family: var(--tech-font);
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+#register-message {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+#register-message a {
+  color: white;
 }
 
 /* ==========================================================================

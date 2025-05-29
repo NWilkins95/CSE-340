@@ -1,0 +1,58 @@
+<!--
+    The following EJS template code checks if a 'title' variable is present.
+    - If 'title' exists, it renders it inside an <h1> tag.
+    - If 'title' is not present, it attempts to redirect the user to the homepage ('/').
+-->
+
+<% if (title) { %>
+<h1 id="register-title"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- 
+    This line is an EJS (Embedded JavaScript) comment that renders flash messages or notifications to the user interface.
+-->
+
+<%- messages() %>
+
+<!-- 
+    The following EJS code checks if there are any validation errors.
+    If there are errors, it creates an unordered list with the class "notice" and iterates over each error,
+    displaying the error message in a list item.
+-->
+    
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(function(error) { %>
+            <% if (error.msg !== "Invalid value") { %>
+                <li><%= error.msg %></li>
+            <% } %>
+        <% }) %>
+    </ul>
+<% } %>
+
+<!-- 
+    The following EJS template code creates a registration form with fields for first name, last name, email, and password.
+    It includes validation patterns for the password field and displays a message for users who are already registered.
+-->
+
+<form id="register-form" action="/account/register" method="post">
+    <fieldset>
+        <label class="form-field" for="fName">First Name:
+            <input class="form-textbox" type="text" name="account_firstname" id="fName" required placeholder="Enter your first name" value="<%= locals.account_firstname %>">
+        </label>
+        <label class="form-field" for="lName">Last Name:
+            <input class="form-textbox" type="text" name="account_lastname" id="lName" required placeholder="Enter your last name" value="<%= locals.account_lastname %>">
+        </label>
+        <label class="form-field" for="username">Email:
+            <input class="form-textbox" type="email" name="account_email" id="username" required placeholder="Enter your email address" value="<%= locals.account_email %>">
+        </label>
+        <label class="form-field" for="password">Password:
+            <input class="form-textbox" type="password" name="account_password" id="password" required placeholder="Enter your password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+            <span id="password-pattern-message">Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character.</span> 
+        </label>
+        <input class="submit-button" type="submit" value="Register">
+        <p id="register-message">Already Registered? <a href="/account/login">Login</a></p>     
+    </fieldset>
+</form>
