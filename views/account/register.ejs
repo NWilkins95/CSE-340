@@ -24,29 +24,29 @@
     
 <% if (errors) { %>
     <ul class="notice">
-        <% errors.array().forEach(error => { 
-            if (error.msg !== "Invalid value") { %>
+        <% errors.array().forEach(function(error) { %>
+            <% if (error.msg !== "Invalid value") { %>
                 <li><%= error.msg %></li>
-        <%  } 
-        }) %>
+            <% } %>
+        <% }) %>
     </ul>
 <% } %>
 
 <!-- 
-    The following HTML code creates a registration form for users to enter their first name, last name, email, and password.
-    It includes labels, input fields, and a submit button.
+    The following EJS template code creates a registration form with fields for first name, last name, email, and password.
+    It includes validation patterns for the password field and displays a message for users who are already registered.
 -->
 
 <form id="register-form" action="/account/register" method="post">
     <fieldset>
         <label class="form-field" for="fName">First Name:
-            <input class="form-textbox" type="text" name="account_firstname" id="fName" required placeholder="Enter your first name">
+            <input class="form-textbox" type="text" name="account_firstname" id="fName" required placeholder="Enter your first name" value="<%= locals.account_firstname %>">
         </label>
         <label class="form-field" for="lName">Last Name:
-            <input class="form-textbox" type="text" name="account_lastname" id="lName" required placeholder="Enter your last name">
+            <input class="form-textbox" type="text" name="account_lastname" id="lName" required placeholder="Enter your last name" value="<%= locals.account_lastname %>">
         </label>
         <label class="form-field" for="username">Email:
-            <input class="form-textbox" type="email" name="account_email" id="username" required placeholder="Enter your email address">
+            <input class="form-textbox" type="email" name="account_email" id="username" required placeholder="Enter your email address" value="<%= locals.account_email %>">
         </label>
         <label class="form-field" for="password">Password:
             <input class="form-textbox" type="password" name="account_password" id="password" required placeholder="Enter your password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">

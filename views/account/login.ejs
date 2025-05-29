@@ -17,14 +17,30 @@
 <%- messages() %>
 
 <!-- 
-    The following HTML code creates a login form for users to enter their email and password.
-    It includes labels, input fields, and a submit button.
+    The following EJS code checks if there are any validation errors.
+    If there are errors, it creates an unordered list with the class "notice" and iterates over each error,
+    displaying the error message in a list item.
+-->
+    
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(function(error) { %>
+            <% if (error.msg !== "Invalid value") { %>
+                <li><%= error.msg %></li>
+            <% } %>
+        <% }) %>
+    </ul>
+<% } %>
+
+<!-- 
+    The following EJS template code creates a login form with fields for email and password.
+    It includes validation patterns for the password field and displays a message for users who do not have an account.
 -->
 
 <form id="login-form" action="/account/login" method="post">
     <fieldset>
         <label class="form-field" for="username">Email:
-            <input class="form-textbox" type="email" name="account_email" id="username" required placeholder="Enter your email address">
+            <input class="form-textbox" type="email" name="account_email" id="username" required placeholder="Enter your email address" value="<%= locals.account_email %>">
         </label>
         <label class="form-field" for="password">Password:
             <input class="form-textbox" type="password" name="account_password" id="password" required placeholder="Enter your password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
