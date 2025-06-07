@@ -89,4 +89,4 @@ async function insertInventory(inv_make, inv_model, inv_description, inv_image, 
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryById, classificationExists, insertClassification}
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryById, classificationExists, insertClassification, insertInventory}
