@@ -1,0 +1,48 @@
+<!--
+    The following EJS template code checks if a 'title' variable is present.
+    - If 'title' exists, it renders it inside an <h1> tag.
+    - If 'title' is not present, it attempts to redirect the user to the homepage ('/').
+-->
+
+<% if (title) { %>
+<h1 class="inv-management-titles"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- 
+    This line is an EJS (Embedded JavaScript) comment that renders flash messages or notifications to the user interface.
+-->
+
+<%- messages() %>
+
+<!-- 
+    The following EJS code checks if there are any validation errors.
+    If there are errors, it creates an unordered list with the class "notice" and iterates over each error,
+    displaying the error message in a list item.
+-->
+    
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(function(error) { %>
+            <% if (error.msg !== "Invalid value") { %>
+                <li><%= error.msg %></li>
+            <% } %>
+        <% }) %>
+    </ul>
+<% } %>
+
+<!-- 
+    This EJS template renders a form for adding a new classification.
+    The form submits to the '/inv/add-classification' endpoint using the POST method.
+    It includes a text input for the classification name and a submit button.
+-->
+
+<form id="add-classification-form" action="/inv/add-classification" method="post">
+    <fieldset>
+        <label class="form-field" for="classificationName">Classification Name:
+            <input class="form-textbox" type="text" name="classification_name" id="classificationName" required placeholder="Enter classification name" value="<%= locals.classification_name %>">
+        </label>
+        <input class="submit-button" type="submit" value="Add Classification">   
+    </fieldset>
+</form>
