@@ -49,6 +49,18 @@ invCont.buildManagementView = async function (req, res, next) {
 }
 
 /* ***************************
+ *  Build "add classification" view
+ * ************************** */
+invCont.buildAddClassificationView = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/add-classification", {
+    title: "Add Classification",
+    nav,
+    errors: null,
+  })
+}
+
+/* ***************************
  *  Handle intentional footer error
  * ************************** */
 invCont.footerError = (req, res, next) => {

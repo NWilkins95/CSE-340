@@ -13,6 +13,9 @@ router.get("/detail/:inv_id", utilities.handleErrors(invController.buildByInvent
 // Route to build management view
 router.get("/management", utilities.handleErrors(invController.buildManagementView));
 
+// Route to "add classification" view
+router.get("/add-classification", utilities.handleErrors(invController.buildAddClassificationView));
+
 // Route to handle intentional footer error
 router.get("/footer-error", utilities.handleErrors(invController.footerError));
 
