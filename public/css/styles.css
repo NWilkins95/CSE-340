@@ -476,7 +476,7 @@ footer {
 */
 
 .inv-management-titles {
-  font-size: clamp(1.13rem, 5vw, 2.1rem);
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
   font-family: var(--secondary-font);
 }
 
