@@ -10,6 +10,9 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 // Route to build vehicle detail view
 router.get("/detail/:inv_id", utilities.handleErrors(invController.buildByInventoryId));
 
+// Route to build management view
+router.get("/management", utilities.handleErrors(invController.buildManagementView));
+
 // Route to handle intentional footer error
 router.get("/footer-error", utilities.handleErrors(invController.footerError));
 
