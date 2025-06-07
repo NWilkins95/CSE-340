@@ -16,6 +16,9 @@ router.get("/management", utilities.handleErrors(invController.buildManagementVi
 // Route to "add classification" view
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassificationView));
 
+// Route to "add inventory" view
+router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventoryView));
+
 // Route to handle intentional footer error
 router.get("/footer-error", utilities.handleErrors(invController.footerError));
 

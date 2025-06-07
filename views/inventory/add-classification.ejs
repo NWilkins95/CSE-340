@@ -39,6 +39,7 @@
 -->
 
 <form id="add-classification-form" action="/inv/add-classification" method="post">
+    <legend class="form-legend">All fields are required</legend>
     <fieldset>
         <label class="form-field" for="classificationName">Classification Name:
             <input class="form-textbox" type="text" name="classification_name" id="classificationName" required placeholder="Enter classification name" value="<%= locals.classification_name %>" pattern="[A-Za-z0-9]+">
