@@ -75,6 +75,28 @@ invCont.buildAddInventoryView = async function (req, res, next) {
 }
 
 /* ***************************
+ *  Process adding a classification
+ * ************************** */
+invCont.processAddClassification = async (req, res, next) => {
+  let nav = await utilities.getNav()
+  const { classification_name } = req.body
+
+  const result = await invModel.insertClassification(classification_name)
+  if (result) {
+    req.flash("notice", `Classification ${classification_name}  added successfully.`)
+    res.status(201).redirect("/inv/management")
+  } else {
+    req.flash("notice", `Error adding classification ${classification_name}. Please try again.`)
+    res.status(500).render("./inventory/add-classification", {
+      title: "Add Classification",
+      nav,
+      errors: null,
+      classification_name,
+    })
+  }
+}
+
+/* ***************************
  *  Handle intentional footer error
  * ************************** */
 invCont.footerError = (req, res, next) => {

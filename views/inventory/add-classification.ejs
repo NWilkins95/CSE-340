@@ -42,7 +42,7 @@
     <legend class="form-legend">All fields are required</legend>
     <fieldset>
         <label class="form-field" for="classificationName">Classification Name:
-            <input class="form-textbox" type="text" name="classification_name" id="classificationName" required placeholder="Enter classification name" value="<%= locals.classification_name %>" pattern="[A-Za-z0-9]+">
+            <input class="form-textbox" type="text" name="classification_name" id="classificationName" required placeholder="Enter classification name" value="<%= locals.classification_name %>" pattern="^[a-zA-Z]+$" minlength="2">
             <span class="pattern-message">Classification name must be alphabetic characters only and cannot include spaces or special characters.</span> 
         </label>
         <input class="submit-button" type="submit" value="Submit">   

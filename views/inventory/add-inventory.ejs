@@ -54,7 +54,7 @@
             <input class="form-textbox" type="text" name="inv_thumbnail" id="invThumbnail" required value="<%= locals.inv_thumbnail?? `/images/vehicles/no-image.png` %>">
         </label>
         <label class="form-field" for="invPrice">Price:
-            <input class="form-textbox" type="number" name="inv_price" id="invPrice" required placeholder="Decimal or Integer" value="<%= locals.inv_price %>">
+            <input class="form-textbox" type="number" name="inv_price" id="invPrice" required placeholder="Decimal or Integer" value="<%= locals.inv_price %> " min="0">
         </label>
         <label class="form-field" for="invYear">Model Year:
             <input class="form-textbox" type="number" name="inv_year" id="invYear" required value="<%= locals.inv_year %>" placeholder="YYYY" pattern="^\d{4}$" min="1900" max="9999">
@@ -63,7 +63,7 @@
             <input class="form-textbox" type="text" name="inv_miles" id="invMiles" required value="<%= locals.inv_miles %>" placeholder="Digits only" pattern="^\d+$" min="0" max="999999">
         </label>
         <label class="form-field" for="invColor">Color:
-            <input class="form-textbox" type="text" name="inv_color" id="invColor" required value="<%= locals.inv_color %>">
+            <input class="form-textbox" type="text" name="inv_color" id="invColor" required value="<%= locals.inv_color %>" minlength="3">
         </label>
         <span class="pattern-message">Please make sure all information is correct before submission</span> 
         <input class="submit-button" type="submit" value="Submit">   

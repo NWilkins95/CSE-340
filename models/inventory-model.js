@@ -52,7 +52,7 @@ async function classificationExists(classification_name) {
     return data.rows.length > 0
   }
   catch (error) {
-    console.error("classificationExists error: " + error);
+    console.error("classificationExists error: " + error)
     return error.message
   }
 }
@@ -68,7 +68,7 @@ async function insertClassification(classification_name) {
       [classification_name]
     )
   } catch (error) {
-    console.error("insertClassification error: " + error);
+    console.error("insertClassification error: " + error)
     return error.message
   }
 }
@@ -78,13 +78,12 @@ async function insertClassification(classification_name) {
  * ************************** */
 async function insertInventory(inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color, classification_id) {
   try {
-    const data = await pool.query(
+    return await pool.query(
       `INSERT INTO public.inventory(inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color, classification_id) 
       VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`, [inv_make, inv_model, inv_description, inv_image.replaceAll("&#x2F;", "/"), inv_thumbnail.replaceAll("&#x2F;", "/"), inv_price, inv_year,inv_miles, inv_color, classification_id]
     );
-    return data.rows;
   } catch (error) {
-    console.error("insertInventory error: " + error);
+    console.error("insertInventory error: " + error)
     return error.message;
   }
 }
