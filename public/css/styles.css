@@ -469,6 +469,30 @@ footer {
 }
 
 /* ==========================================================================
+  Section: Inventory Management Pages
+  --------------------------------------------------------------------------
+  This section contains styles specifically used on the inventory management page and the add classsification and add vehicle pages.
+  ==========================================================================
+*/
+
+.inv-management-titles {
+  font-size: clamp(1.13rem, 5vw, 2.1rem);
+  font-family: var(--secondary-font);
+}
+
+#management-page-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.management-link{
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-family: var(--tech-font);
+}
+
+/* ==========================================================================
   Section: Error Styles
   --------------------------------------------------------------------------
   This section contains styles specifically used in error pages.
