@@ -40,4 +40,53 @@ async function getInventoryById(inv_id) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryById}
+/* ***************************
+ *  Check if classification alreadt exists
+ * ************************** */
+async function classificationExists(classification_name) {
+  try {
+    const data = await pool.query(
+      `SELECT * FROM public.classification WHERE classification_name = $1`,
+      [classification_name]
+    )
+    return data.rows.length > 0
+  }
+  catch (error) {
+    console.error("classificationExists error: " + error);
+    return error.message
+  }
+}
+
+/* ***************************
+ *  Insert new classification into the database
+ * ************************** */
+async function insertClassification(classification_name) {
+  try {
+    return await pool.query(
+      `INSERT INTO public.classification (classification_name) 
+      VALUES ($1) RETURNING *`,
+      [classification_name]
+    )
+  } catch (error) {
+    console.error("insertClassification error: " + error);
+    return error.message
+  }
+}
+
+/* ***************************
+ *  Insert new inventory item into the database
+ * ************************** */
+async function insertInventory(inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color, classification_id) {
+  try {
+    const data = await pool.query(
+      `INSERT INTO public.inventory(inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color, classification_id) 
+      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`, [inv_make, inv_model, inv_description, inv_image.replaceAll("&#x2F;", "/"), inv_thumbnail.replaceAll("&#x2F;", "/"), inv_price, inv_year,inv_miles, inv_color, classification_id]
+    );
+    return data.rows;
+  } catch (error) {
+    console.error("insertInventory error: " + error);
+    return error.message;
+  }
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryById, classificationExists, insertClassification}
