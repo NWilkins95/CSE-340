@@ -1,6 +1,7 @@
 // Description: This file contains validation rules for inventory-related operations.
 const inventoryModel = require("../models/inventory-model")
 const utilities = require(".")
+const path = require("path")
 const { body, validationResult } = require("express-validator")
 const validate = {}
 
@@ -30,6 +31,134 @@ validate.classificationRules = () => {
 }
 
 /* **********************************
+ * "Add Inventory" Validation Rules
+ * ********************************* */
+validate.addInventoryRules = () => {
+    return [
+        // classification_id is required and must be numeric
+        body("classification_id")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isNumeric()
+            .custom((value) => {
+                if (!value) {
+                    throw new Error("Please select a classification.");
+                }
+                return true;
+            })
+            .withMessage("Please select a classification."),
+        body("inv_make")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isLength({ min: 3 })
+            .custom((value) => {
+                if (!value || value.length < 3) {
+                    throw new Error("Please provide a make for the vehicle.");
+                }
+                return true;
+            })
+            .withMessage("Please provide a make for the vehicle."),
+        body("inv_model")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isLength({ min: 3 })
+            .custom((value) => {
+                if (!value || value.length < 3) {
+                    throw new Error("Please provide a model for the vehicle.");
+                }
+                return true;
+            })
+            .withMessage("Please provide a model for the vehicle."),
+        body("inv_description")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isLength({ min: 5 })
+            .custom((value) => {
+                if (!value || value.length < 5) {
+                    throw new Error("Please provide a description for the vehicle.");
+                }
+                return true;
+            })
+            .withMessage("Please provide a description for the vehicle."),
+        body("inv_image")
+            .trim()
+            .escape()
+            .notEmpty()
+            .custom((value) => {
+                if (
+                    path.isAbsolute(value) ||
+                    value.match(/^(\.\.?\/|\/|[a-zA-Z]:\\|[a-zA-Z]:\/)/)
+                ) {
+                    return true;
+                }
+                throw new Error("Please provide a valid image file path.");
+            })
+            .withMessage("Please provide a valid image file path."),
+        body("inv_thumbnail")
+            .trim()
+            .escape()
+            .notEmpty()
+            .custom((value) => {
+                if (
+                    path.isAbsolute(value) ||
+                    value.match(/^(\.\.?\/|\/|[a-zA-Z]:\\|[a-zA-Z]:\/)/)
+                ) {
+                    return true;
+                }
+                throw new Error("Please provide a valid thumbnail file path.");
+            })
+            .withMessage("Please provide a valid thumbnail file path."),
+        body("inv_price")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isNumeric()
+            .isFloat({ min: 0.01 }).withMessage("Price must be a positive number.")
+            .toFloat()
+            .withMessage("Please provide a valid price for the vehicle."),
+        body("inv_year")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isNumeric()
+            .isInt().withMessage("Model year must be a whole number.")
+            .toInt()
+            .custom((value) => {
+                const currentYear = new Date().getFullYear();
+                if (value < 1886 || value > currentYear + 1) {
+                    throw new Error(`Year must be between 1886 and ${currentYear + 1}.`);
+                }
+                return true;
+            })
+            .withMessage("Please provide a valid year for the vehicle."),
+        body("inv_miles")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isNumeric()
+            .isFloat({ min: 0 }).withMessage("Mileage must be a non-negative number.")
+            .toFloat()
+            .withMessage("Please provide valid mileage for the vehicle."),
+        body("inv_color")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isLength({ min: 3 })
+            .custom((value) => {
+                if (!value || value.length < 3) {
+                    throw new Error("Please provide a color for the vehicle.");
+                }
+                return true;
+            })
+            .withMessage("Please provide a color for the vehicle."),
+    ]
+}
+
+/* **********************************
  * Validate Classification Data
  * ********************************* */
 
@@ -44,6 +173,48 @@ validate.checkClassificationData = async (req, res, next) => {
             title: "Add Classification",
             nav,
             classification_name,
+        })
+        return
+    }
+    next()
+}
+
+/* **********************************
+ * Validate "Add Inventory" Data
+ * ********************************* */
+validate.checkAddInventoryData = async (req, res, next) => {
+    const {
+        classification_id,
+        inv_make,
+        inv_model,
+        inv_description,
+        inv_image,
+        inv_thumbnail,
+        inv_price,
+        inv_year,
+        inv_miles,
+        inv_color,
+    } = req.body
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        let classifications = await utilities.buildClassificationList()
+        let nav = await utilities.getNav()
+        res.render("inventory/add-inventory", {
+            errors,
+            title: "Add Vehicle",
+            nav,
+            classifications,
+            classification_id,
+            inv_make,
+            inv_model,
+            inv_description,
+            inv_image,
+            inv_thumbnail,
+            inv_price,
+            inv_year,
+            inv_miles,
+            inv_color,
         })
         return
     }
