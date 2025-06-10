@@ -296,7 +296,7 @@ footer {
   ==========================================================================
 */
 
-#login-form, #register-form {
+#login-form, #register-form, #add-classification-form, #add-inventory-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -310,7 +310,11 @@ footer {
   font-family: var(--tech-font);
 }
 
-#login-form fieldset, #register-form fieldset {
+.form-legend {
+  font-size: 1.2rem;
+}
+
+#login-form fieldset, #register-form fieldset, #add-classification-form fieldset, #add-inventory-form fieldset {
   width: 80%;
   padding: 1rem;
   display: flex;
@@ -338,7 +342,7 @@ footer {
   font-size: 1rem;
 }
 
-#password-pattern-message {
+#password-pattern-message, .pattern-message {
   font-size: 0.8rem;
   font-style: italic;
   color: white;
@@ -402,7 +406,8 @@ footer {
 
 #inv-display li img {
   display: block;
-  max-width: 100%;
+  width: 198px;
+  max-height: 140px;
   border-radius: 10px;
   justify-self: center;
 }
@@ -454,6 +459,7 @@ footer {
   justify-self: center;
   width: 100%;
   max-width: 450px;
+  max-height: 325px;
   height: auto;
 }
 
@@ -466,6 +472,34 @@ footer {
 
 .detail-price, .detail-mileage {
   background-color: #f7f7f7;
+}
+
+/* ==========================================================================
+  Section: Inventory Management Pages
+  --------------------------------------------------------------------------
+  This section contains styles specifically used on the inventory management page and the add classsification and add vehicle pages.
+  ==========================================================================
+*/
+
+.inv-management-titles {
+  font-size: clamp(1.6rem, 5vw, 2rem);
+  font-family: var(--secondary-font);
+}
+
+#management-page-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.management-link{
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-family: var(--tech-font);
+}
+
+#classificationList {
+  font-size: 1rem;
 }
 
 /* ==========================================================================

@@ -1,0 +1,71 @@
+<!--
+    The following EJS template code checks if a 'title' variable is present.
+    - If 'title' exists, it renders it inside an <h1> tag.
+    - If 'title' is not present, it attempts to redirect the user to the homepage ('/').
+-->
+
+<% if (title) { %>
+<h1 class="inv-management-titles"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- 
+    This line is an EJS (Embedded JavaScript) comment that renders flash messages or notifications to the user interface.
+-->
+
+<%- messages() %>
+
+<!-- 
+    The following EJS code checks if there are any validation errors.
+    If there are errors, it creates an unordered list with the class "notice" and iterates over each error,
+    displaying the error message in a list item.
+-->
+    
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(function(error) { %>
+            <% if (error.msg !== "Invalid value") { %>
+                <li><%= error.msg %></li>
+            <% } %>
+        <% }) %>
+    </ul>
+<% } %>
+
+<form id="add-inventory-form" action="/inv/add-inventory" method="post">
+    <legend class="form-legend">All fields are required</legend>
+    <fieldset>
+        <label class="form-field" for="classificationName">Classification:
+           <%- classifications %>
+        </label>
+        <label class="form-field" for="invMake">Make:
+            <input class="form-textbox" type="text" name="inv_make" id="invMake" required minlength="3" placeholder="Min 3 characters" value="<%= locals.inv_make %>">
+        </label>
+        <label class="form-field" for="invModel">Model:
+            <input class="form-textbox" type="text" name="inv_model" id="invModel" required minlength="3" placeholder="Min 3 characters" value="<%= locals.inv_model %>">
+        </label>
+        <label class="form-field" for="invDescription">Description:
+            <textarea class="form-textbox" name="inv_description" id="invDescription" rows="5" cols="50"><%= locals.inv_description %></textarea>
+        </label>
+        <label class="form-field" for="invImage">Image Path:
+            <input class="form-textbox" type="text" name="inv_image" id="invImage" required value="<%- locals.inv_image?? `/images/vehicles/no-image.png` %>">
+        </label>
+        <label class="form-field" for="invThumbnail">Thumbnail Path:
+            <input class="form-textbox" type="text" name="inv_thumbnail" id="invThumbnail" required value="<%- locals.inv_thumbnail?? `/images/vehicles/no-image-tn.png` %>">
+        </label>
+        <label class="form-field" for="invPrice">Price:
+            <input class="form-textbox" type="text" name="inv_price" id="invPrice" required placeholder="Decimals allowed" value="<%= locals.inv_price %>" pattern="^\d+(\.\d{1,2})?$">
+        </label>
+        <label class="form-field" for="invYear">Model Year:
+            <input class="form-textbox" type="text" name="inv_year" id="invYear" required value="<%= locals.inv_year %>" placeholder="YYYY" pattern="^\d{4}$">
+        </label>
+        <label class="form-field" for="invMiles">Mileage:
+            <input class="form-textbox" type="text" name="inv_miles" id="invMiles" required value="<%= locals.inv_miles %>" placeholder="Whole numbers only" pattern="^\d+$">
+        </label>
+        <label class="form-field" for="invColor">Color:
+            <input class="form-textbox" type="text" name="inv_color" id="invColor" required value="<%= locals.inv_color %>" minlength="3">
+        </label>
+        <span class="pattern-message">Please make sure all information is correct before submission</span> 
+        <input class="submit-button" type="submit" value="Submit">   
+    </fieldset>
+</form>
