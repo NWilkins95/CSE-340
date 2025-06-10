@@ -26,4 +26,7 @@ router.get("/footer-error", utilities.handleErrors(invController.footerError));
 // Route to handle "add classification" form submission
 router.post("/add-classification", validate.classificationRules(), validate.checkClassificationData, utilities.handleErrors(invController.processAddClassification));
 
+// Route to handle "add inventory" form submission 
+router.post("/add-inventory", validate.addInventoryRules(), validate.checkAddInventoryData, utilities.handleErrors(invController.processAddInventory));
+
 module.exports = router;

@@ -97,6 +97,61 @@ invCont.processAddClassification = async (req, res, next) => {
 }
 
 /* ***************************
+ *  Process adding a vehicle
+ * ************************** */
+invCont.processAddInventory = async (req, res, next) => {
+  let nav = await utilities.getNav()
+  const {
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+  } = req.body
+
+  const result = await invModel.insertInventory({
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+  })
+
+  if (result) {
+    req.flash("notice", `Vehicle ${inv_make} ${inv_model} added successfully.`)
+    res.status(201).redirect("/inv/management")
+  } else {
+    req.flash("notice", `Error adding vehicle ${inv_make} ${inv_model}. Please try again.`)
+    res.status(500).render("./inventory/add-inventory", {
+      title: "Add Vehicle",
+      nav,
+      errors: null,
+      classifications: await utilities.buildClassificationList(),
+      classification_id,
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color,
+    })
+  }
+}
+
+/* ***************************
  *  Handle intentional footer error
  * ************************** */
 invCont.footerError = (req, res, next) => {

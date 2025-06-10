@@ -76,15 +76,42 @@ async function insertClassification(classification_name) {
 /* ***************************
  *  Insert new inventory item into the database
  * ************************** */
-async function insertInventory(inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color, classification_id) {
+async function insertInventory(vehicle) {
   try {
+    const {
+      classification_id,
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color,
+    } = vehicle
+
     return await pool.query(
-      `INSERT INTO public.inventory(inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color, classification_id) 
-      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`, [inv_make, inv_model, inv_description, inv_image.replaceAll("&#x2F;", "/"), inv_thumbnail.replaceAll("&#x2F;", "/"), inv_price, inv_year,inv_miles, inv_color, classification_id]
-    );
+      `INSERT INTO public.inventory(
+        inv_make, inv_model, inv_description, inv_image, inv_thumbnail,
+        inv_price, inv_year, inv_miles, inv_color, classification_id
+      ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+      [
+        inv_make,
+        inv_model,
+        inv_description,
+        inv_image,
+        inv_thumbnail,
+        inv_price,
+        inv_year,
+        inv_miles,
+        inv_color,
+        classification_id
+      ]
+    )
   } catch (error) {
     console.error("insertInventory error: " + error)
-    return error.message;
+    return error.message
   }
 }
 

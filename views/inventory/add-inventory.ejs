@@ -45,7 +45,7 @@
             <input class="form-textbox" type="text" name="inv_model" id="invModel" required minlength="3" placeholder="Min 3 characters" value="<%= locals.inv_model %>">
         </label>
         <label class="form-field" for="invDescription">Description:
-            <textarea class="form-textbox" type="text" name="inv_description" id="invDescription" rows="5" cols="50" value="<%= locals.inv_description %>"></textarea>
+            <textarea class="form-textbox" type="text" name="inv_description" id="invDescription" rows="5" cols="50" <%= locals.inv_description %>></textarea>
         </label>
         <label class="form-field" for="invImage">Image Path:
             <input class="form-textbox" type="text" name="inv_image" id="invImage" required value="<%= locals.inv_image?? `/images/vehicles/no-image.png` %>">
@@ -54,13 +54,13 @@
             <input class="form-textbox" type="text" name="inv_thumbnail" id="invThumbnail" required value="<%= locals.inv_thumbnail?? `/images/vehicles/no-image.png` %>">
         </label>
         <label class="form-field" for="invPrice">Price:
-            <input class="form-textbox" type="number" name="inv_price" id="invPrice" required placeholder="Decimal or Integer" value="<%= locals.inv_price %> " min="0" max="9999999" step="0.01">
+            <input class="form-textbox" type="text" name="inv_price" id="invPrice" required placeholder="Digits Only" value="<%= locals.inv_price %>">
         </label>
         <label class="form-field" for="invYear">Model Year:
-            <input class="form-textbox" type="number" name="inv_year" id="invYear" required value="<%= locals.inv_year %>" placeholder="YYYY" pattern="^\d{4}$" min="1886" max="9999" step="1">
+            <input class="form-textbox" type="text" name="inv_year" id="invYear" required value="<%= locals.inv_year %>" placeholder="YYYY" pattern="^\d{4}$">
         </label>
         <label class="form-field" for="invMiles">Mileage:
-            <input class="form-textbox" type="text" name="inv_miles" id="invMiles" required value="<%= locals.inv_miles %>" placeholder="Digits only" pattern="^\d+$" min="0" max="999999" step="0.1">
+            <input class="form-textbox" type="text" name="inv_miles" id="invMiles" required value="<%= locals.inv_miles %>" placeholder="Digits only" pattern="^\d+$">
         </label>
         <label class="form-field" for="invColor">Color:
             <input class="form-textbox" type="text" name="inv_color" id="invColor" required value="<%= locals.inv_color %>" minlength="3">
