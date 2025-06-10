@@ -406,7 +406,8 @@ footer {
 
 #inv-display li img {
   display: block;
-  max-width: 100%;
+  width: 198px;
+  max-height: 140px;
   border-radius: 10px;
   justify-self: center;
 }

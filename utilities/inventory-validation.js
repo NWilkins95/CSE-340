@@ -74,16 +74,31 @@ validate.addInventoryRules = () => {
             .trim()
             .escape()
             .notEmpty()
+            .custom(async (inv_price) => {
+                if (!inv_price.match(/^\d+(\.\d{1,2})?$/)) {
+                    throw new Error("Only numeric values are allowed for price.")
+                }
+            })
             .withMessage("Please provide a valid price for the vehicle."),
         body("inv_year")
             .trim()
             .escape()
             .notEmpty()
+            .custom(async (inv_year) => {
+                if (!inv_year.match(/^\d{4}$/)) {
+                    throw new Error("Year must be a four-digit number.")
+                }
+            })
             .withMessage("Please provide a valid year for the vehicle."),
         body("inv_miles")
             .trim()
             .escape()
             .notEmpty()
+            .custom(async (inv_miles) => {
+                if (!inv_miles.match(/^\d+$/)) {
+                    throw new Error("Miles must be a whole number numeric value.")
+                }
+            })
             .withMessage("Please provide valid mileage for the vehicle."),
         body("inv_color")
             .trim()
