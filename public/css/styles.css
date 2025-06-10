@@ -459,6 +459,7 @@ footer {
   justify-self: center;
   width: 100%;
   max-width: 450px;
+  max-height: 325px;
   height: auto;
 }
 
