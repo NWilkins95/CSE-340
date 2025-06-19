@@ -17,6 +17,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const accountRoute = require("./routes/accountRoute")
 const session = require("express-session")
 const pool = require('./database/')
+const cookieParser = require("cookie-parser")
 
 /* ***********************
  * Middleware
@@ -42,6 +43,9 @@ app.use(function(req, res, next){
 // Body Parser Middleware
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+// Cookie Parser Middleware
+app.use(cookieParser())
 
 /* ***********************
  * View Engine and Templates
