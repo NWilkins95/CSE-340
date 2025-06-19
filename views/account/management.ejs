@@ -1,0 +1,21 @@
+<!--
+    The following EJS template code checks if a 'title' variable is present.
+    - If 'title' exists, it renders it inside an <h1> tag.
+    - If 'title' is not present, it attempts to redirect the user to the homepage ('/').
+-->
+
+<% if (title) { %>
+<h1 id="account-management-title"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- 
+    This line is an EJS (Embedded JavaScript) comment that renders flash messages or notifications to the user interface.
+-->
+
+<%- messages() %>
+
+<!-- Following EJS code displays "You're Logged In" -->
+
+<p id="logged-in-message">You're Logged In</p>
