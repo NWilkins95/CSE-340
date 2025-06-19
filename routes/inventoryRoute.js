@@ -29,4 +29,7 @@ router.post("/add-classification", validate.classificationRules(), validate.chec
 // Route to handle "add inventory" form submission 
 router.post("/add-inventory", validate.addInventoryRules(), validate.checkAddInventoryData, utilities.handleErrors(invController.processAddInventory));
 
+// Route to get inventory items based on classification_id
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
 module.exports = router;
