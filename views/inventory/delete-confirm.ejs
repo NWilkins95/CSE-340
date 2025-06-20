@@ -1,0 +1,53 @@
+<!--
+    The following EJS template code checks if a 'title' variable is present.
+    - If 'title' exists, it renders it inside an <h1> tag.
+    - If 'title' is not present, it attempts to redirect the user to the homepage ('/').
+-->
+
+<% if (title) { %>
+<h1 class="inv-management-titles"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- 
+    This line is an EJS (Embedded JavaScript) comment that renders flash messages or notifications to the user interface.
+-->
+
+<%- messages() %>
+
+<!-- 
+    The following EJS code checks if there are any validation errors.
+    If there are errors, it creates an unordered list with the class "notice" and iterates over each error,
+    displaying the error message in a list item.
+-->
+    
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(function(error) { %>
+            <% if (error.msg !== "Invalid value") { %>
+                <li><%= error.msg %></li>
+            <% } %>
+        <% }) %>
+    </ul>
+<% } %>
+
+<form id="delete-inventory-form" action="/inv/delete" method="post">
+    <fieldset>
+        <label class="form-field" for="invMake">Make:
+            <input class="form-textbox" type="text" name="inv_make" id="invMake" value="<%= locals.inv_make %>" readonly>
+        </label>
+        <label class="form-field" for="invModel">Model:
+            <input class="form-textbox" type="text" name="inv_model" id="invModel" value="<%= locals.inv_model %>" readonly>
+        </label>
+        <label class="form-field" for="invPrice">Price:
+            <input class="form-textbox" type="text" name="inv_price" id="invPrice" value="<%= locals.inv_price %>" readonly>
+        </label>
+        <label class="form-field" for="invYear">Model Year:
+            <input class="form-textbox" type="text" name="inv_year" id="invYear" value="<%= locals.inv_year %>" readonly>
+        </label>
+        <span class="pattern-message">Confirm Deletion - The delete is permanent.</span> 
+        <input class="submit-button" type="submit" value="Delete">
+        <input type="hidden" name="inv_id" value="<%= locals.inv_id %>">
+    </fieldset>
+</form>
