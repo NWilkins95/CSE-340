@@ -29,7 +29,7 @@ router.get("/getInventory/:classification_id", utilities.handleErrors(invControl
 // Route to build edit inventory view
 router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView));
 
-// Route to build delete inventory view
+// Route to build the delete inventory view
 router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteInventoryView));
 
 // Route to handle "add classification" form submission
