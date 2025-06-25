@@ -131,7 +131,7 @@ async function accountLogin(req, res) {
 }
 
 /* ****************************************
- *  Process login request
+ *  Process logout request
  * ************************************ */
 async function accountLogout(req, res) {
   res.clearCookie("jwt")
