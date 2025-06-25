@@ -17,5 +17,17 @@
 <%- messages() %>
 
 <!-- Following EJS code displays "You're Logged In" -->
+<div id="management-page-content">
+  <% if (locals.accountData.account_type != "Employee" && locals.accountData.account_type != "Admin") { %>
+    <h2>Welcome, <%- locals.accountData.account_firstname %> </h2>
+    <a href="/account/update" class="management-link">Update Account Information</a>
+  <% } else { %>
+    <h2>Welcome, <%- locals.accountData.account_firstname %></h2>
+    <a href="/account/update" class="management-link">Update Account Information</a>
 
-<p id="logged-in-message">You're Logged In</p>
+    <div id="inventory-management">
+      <h2>Inventory Management</h2>
+      <a href="/inv/" class="management-link">Manage Inventory</a>
+    </div>
+  <% } %>
+</div>
