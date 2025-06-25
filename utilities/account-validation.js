@@ -1,6 +1,8 @@
 // Description: This file contains validation rules for account-related operations.
 const accountModel = require("../models/account-model")
 const utilities = require(".")
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
 const { body, validationResult } = require("express-validator")
 const validate = {}
 
@@ -125,5 +127,38 @@ validate.checkLoginData = async (req, res, next) => {
   }
   next()
 }
+
+/* ****************************************
+* Check JWT token and check
+* if user has admin/employee privileges.
+**************************************** */
+validate.checkAdminAccess = (req, res, next) => {
+  if (req.cookies.jwt) {
+    jwt.verify(
+      req.cookies.jwt,
+      process.env.ACCESS_TOKEN_SECRET,
+      function (err, accountData) {
+        if (err) {
+          req.flash("notice", "Please log in");
+          res.clearCookie("jwt");
+          return res.redirect("/account/login");
+        }
+        if (
+          accountData.account_type != "Employee" &&
+          accountData.account_type != "Admin"
+        ) {
+          req.flash("notice", "Access denied. Administrator privileges required.");
+          req.flash("notice", "Please login as an administrator.");
+          res.clearCookie("jwt");
+          return res.redirect("/account/login");
+        }
+        next();
+      }
+    );
+  } else {
+    req.flash("notice", "Please log in");
+    return res.redirect("/account/login");
+  }
+};
 
 module.exports = validate
