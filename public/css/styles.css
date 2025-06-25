@@ -61,11 +61,18 @@ main {
   color: black
 }
 
+#tools {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 #tools a {
-  font-size: clamp(1.13rem, 5vw, 1.3rem);
+  font-size: clamp(1rem, 5vw, 1.2rem);
   font-family: var(--tech-font);
-  text-decoration: none;
   color: black;
+  margin: 0 0.5rem;
 }
 
 nav {
