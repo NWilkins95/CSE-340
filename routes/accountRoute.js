@@ -20,12 +20,16 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 // Route to build update view
 router.get("/update", utilities.checkJWTToken, utilities.handleErrors(accountController.buildUpdate));
 
+// Route to handle account update form submission
+router.post("/update", utilities.checkJWTToken, validate.updateRules(), validate.checkUpdateData, utilities.handleErrors(accountController.updateAccount))
+
+// Route to handle password update form submission
+router.post("/update-password", utilities.checkJWTToken, validate.updatePasswordRules(), validate.checkUpdatePasswordData, utilities.handleErrors(accountController.updatePassword))
+
 // Route to handle registration form submission
 router.post('/register', validate.registationRules(), validate.checkRegData, utilities.handleErrors(accountController.registerAccount))
 
 // Process the login attempt
-router.post(
-  "/login", validate.loginRules(), validate.checkLoginData, utilities.handleErrors(accountController.accountLogin)
-)
+router.post("/login", validate.loginRules(), validate.checkLoginData, utilities.handleErrors(accountController.accountLogin));
 
 module.exports = router;

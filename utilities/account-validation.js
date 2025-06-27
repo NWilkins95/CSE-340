@@ -190,12 +190,16 @@ validate.updateRules = () => {
     .isEmail()
     .normalizeEmail() // refer to validator.js docs
     .withMessage("A valid email is required.")
-    .custom(async (account_email) => {
+    .custom(async (account_email, {req}) => {
+        const account_id = req.body.account_id
         const emailExists = await accountModel.checkExistingEmail(account_email)
-        if (emailExists){
+        if (emailExists) {
+          const existingAccount = await accountModel.getAccountByEmail(account_email)
+          if (String(existingAccount.account_id) !== account_id) {
             throw new Error("Email exists. Please log in or use different email")
+          }
         }
-    }),
+      }),
   ]
 }
 
@@ -223,7 +227,7 @@ validate.updatePasswordRules = () => {
  * Check data and return errors or continue to update account
  * ***************************** */
 validate.checkUpdateData = async (req, res, next) => {
-  const { account_firstname, account_lastname, account_email } = req.body
+  const { account_firstname, account_lastname, account_email, account_id } = req.body
   let errors = []
   errors = validationResult(req)
   if (!errors.isEmpty()) {
@@ -235,6 +239,7 @@ validate.checkUpdateData = async (req, res, next) => {
       account_firstname,
       account_lastname,
       account_email,
+      account_id, // Ensure account_id is passed to the view
     })
     return  
   }

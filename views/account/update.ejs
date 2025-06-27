@@ -40,16 +40,16 @@
 <form id="accUpdate-form" action="/account/update" method="post">
     <fieldset>
         <label class="form-field" for="fName">First Name:
-            <input class="form-textbox" type="text" name="account_firstname" id="fName" required placeholder="Enter your first name" value="<%= locals.account_firstname %>">
+            <input class="form-textbox" type="text" name="account_firstname" id="fName" required placeholder="Enter your first name" value="<%= account_firstname %>">
         </label>
         <label class="form-field" for="lName">Last Name:
-            <input class="form-textbox" type="text" name="account_lastname" id="lName" required placeholder="Enter your last name" value="<%= locals.account_lastname %>">
+            <input class="form-textbox" type="text" name="account_lastname" id="lName" required placeholder="Enter your last name" value="<%= account_lastname %>">
         </label>
         <label class="form-field" for="username">Email:
-            <input class="form-textbox" type="email" name="account_email" id="username" required placeholder="Enter your email address" value="<%= locals.account_email %>">
+            <input class="form-textbox" type="email" name="account_email" id="username" required placeholder="Enter your email address" value="<%= account_email %>">
         </label>
         <input class="submit-button" type="submit" value="Update">
-        <input type="hidden" name="account_id" value="<%= locals.account_id %>">   
+        <input type="hidden" name="account_id" value="<%= account_id %>">   
     </fieldset>
 </form>
 

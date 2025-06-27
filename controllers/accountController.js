@@ -130,7 +130,16 @@ async function updateAccount(req, res) {
   );
 
   if (updateResult) {
-    req.flash("notice", "Your account has been successfully updated.");
+    req.flash("notice", "Your account has been successfully updated!");
+    req.flash("notice", "First name: " + account_firstname)
+    req.flash("notice", "Last name: " + account_lastname)
+    req.flash("notice", "Email: " + account_email);
+    req.session.accountData = {
+      account_id,
+      account_firstname,
+      account_lastname,
+      account_email,
+    };
     return res.redirect("/account/");
   } else {
     req.flash("notice", "Sorry, the update failed.");
@@ -209,6 +218,7 @@ async function accountLogin(req, res) {
       } else {
         res.cookie("jwt", accessToken, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
       }
+      req.session.accountData = accountData
       return res.redirect("/account/")
     }
     else {

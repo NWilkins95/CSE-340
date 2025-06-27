@@ -50,6 +50,13 @@ app.use(cookieParser())
 // JWT Middleware
 app.use(utilities.checkJWTToken)
 
+// Set local variables for account data
+app.use((req, res, next) => {
+  res.locals.accountData = req.session.accountData;
+  next();
+});
+
+
 /* ***********************
  * View Engine and Templates
  *************************/
