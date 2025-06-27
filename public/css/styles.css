@@ -303,7 +303,7 @@ footer {
   ==========================================================================
 */
 
-#login-form, #register-form, #add-classification-form, #add-inventory-form, #edit-inventory-form, #delete-inventory-form {
+#login-form, #register-form, #add-classification-form, #add-inventory-form, #edit-inventory-form, #delete-inventory-form, #accUpdate-form, #password-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -321,7 +321,7 @@ footer {
   font-size: 1.2rem;
 }
 
-#login-form fieldset, #register-form fieldset, #add-classification-form fieldset, #add-inventory-form fieldset, #edit-inventory-form fieldset, #delete-inventory-form fieldset {
+#login-form fieldset, #register-form fieldset, #add-classification-form fieldset, #add-inventory-form fieldset, #edit-inventory-form fieldset, #delete-inventory-form fieldset, #accUpdate-form fieldset, #password-form fieldset {
   width: 80%;
   padding: 1rem;
   display: flex;

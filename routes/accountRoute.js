@@ -17,6 +17,9 @@ router.get("/logout", utilities.checkLogin, utilities.handleErrors(accountContro
 // Route to build register view
 router.get("/register", utilities.handleErrors(accountController.buildRegister));
 
+// Route to build update view
+router.get("/update", utilities.checkJWTToken, utilities.handleErrors(accountController.buildUpdate));
+
 // Route to handle registration form submission
 router.post('/register', validate.registationRules(), validate.checkRegData, utilities.handleErrors(accountController.registerAccount))
 

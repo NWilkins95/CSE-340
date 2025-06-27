@@ -88,6 +88,29 @@ async function registerAccount(req, res) {
   }
 }
 
+async function buildUpdate(req, res) {
+  let nav = await utilities.getNav();
+  const accountData = res.locals.accountData;
+  if (!accountData) {
+    req.flash("notice", "Please log in to update your account.");
+    return res.redirect("/account/login");
+  }
+  const accountDetails = await accountModel.getAccountById(accountData.account_id);
+  if (!accountDetails) {
+    req.flash("notice", "Account not found.");
+    return res.redirect("/account/login");
+  }
+  res.render("account/update", {
+    title: "Update Account",
+    nav,
+    errors: null,
+    account_id: accountDetails.account_id,
+    account_firstname: accountDetails.account_firstname,
+    account_lastname: accountDetails.account_lastname,
+    account_email: accountDetails.account_email,
+  });
+}
+
 /* ****************************************
  *  Process login request
  * ************************************ */
@@ -139,4 +162,4 @@ async function accountLogout(req, res) {
   res.redirect("/")
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildManagement, accountLogout };
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildManagement, accountLogout, buildUpdate };
