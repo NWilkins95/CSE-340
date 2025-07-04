@@ -4,6 +4,7 @@ const utilities = require(".")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 const { body, validationResult } = require("express-validator")
+const session = require("express-session")
 const validate = {}
 
 /* **********************************
@@ -259,6 +260,10 @@ validate.checkUpdatePasswordData = async (req, res, next) => {
       errors,
       title: "Update Password",
       nav,
+      account_firstname: req.session.accountData.account_firstname,
+      account_lastname: req.session.accountData.account_lastname,
+      account_email: req.session.accountData.account_email,
+      account_id: req.session.accountData.account_id, // Ensure account_id is passed to the view
     })
     return 
   }
