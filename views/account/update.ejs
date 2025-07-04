@@ -1,0 +1,66 @@
+<!--
+    The following EJS template code checks if a 'title' variable is present.
+    - If 'title' exists, it renders it inside an <h1> tag.
+    - If 'title' is not present, it attempts to redirect the user to the homepage ('/').
+-->
+
+<% if (title) { %>
+<h1 id="updateView-title"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<!-- 
+    This line is an EJS (Embedded JavaScript) comment that renders flash messages or notifications to the user interface.
+-->
+
+<%- messages() %>
+
+<!-- 
+    The following EJS code checks if there are any validation errors.
+    If there are errors, it creates an unordered list with the class "notice" and iterates over each error,
+    displaying the error message in a list item.
+-->
+    
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(function(error) { %>
+            <% if (error.msg !== "Invalid value") { %>
+                <li><%= error.msg %></li>
+            <% } %>
+        <% }) %>
+    </ul>
+<% } %>
+
+<!-- 
+    The following EJS template code creates a form for updating account information and a form for updating password.
+-->
+
+<h2 id="update-account-title">Update Personal Information</h2>
+<form id="accUpdate-form" action="/account/update" method="post">
+    <fieldset>
+        <label class="form-field" for="fName">First Name:
+            <input class="form-textbox" type="text" name="account_firstname" id="fName" required placeholder="Enter your first name" value="<%= account_firstname %>">
+        </label>
+        <label class="form-field" for="lName">Last Name:
+            <input class="form-textbox" type="text" name="account_lastname" id="lName" required placeholder="Enter your last name" value="<%= account_lastname %>">
+        </label>
+        <label class="form-field" for="username">Email:
+            <input class="form-textbox" type="email" name="account_email" id="username" required placeholder="Enter your email address" value="<%= account_email %>">
+        </label>
+        <input class="submit-button" type="submit" value="Update">
+        <input type="hidden" name="account_id" value="<%= account_id %>">   
+    </fieldset>
+</form>
+
+<h2 id="update-password-title">Update Password</h2>
+<form id="password-form" action="/account/updatePassword" method="post">
+    <fieldset>
+        <label class="form-field" for="password">Password:
+            <input class="form-textbox" type="password" name="account_password" id="password" required placeholder="Enter your password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+            <span id="password-pattern-message">This will permanently change your password. Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character.</span> 
+        </label>
+        <input class="submit-button" type="submit" value="Update">
+        <input type="hidden" name="account_id" value="<%= locals.account_id %>">  
+    </fieldset>
+</form>
