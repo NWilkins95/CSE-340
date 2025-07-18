@@ -38,22 +38,8 @@ const addRepair = async (inv_id, repair_description, repair_cost, repair_date) =
     return rows[0];
 };
 
-/* ***************************
- *  Delete repair record by ID
- * ************************** */
-const deleteRepairById = async (repair_id) => {
-    const query = `
-        DELETE FROM public.repairs
-        WHERE repair_id = $1
-        RETURNING *
-    `;
-    const { rows } = await pool.query(query, [repair_id]);
-    return rows[0];
-};
-
 module.exports = {
     getAllRepairs,
     getRepairsByInventoryId,
     addRepair,
-    deleteRepairById
 };
