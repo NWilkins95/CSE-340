@@ -41,7 +41,7 @@
             <textarea class="form-textbox" name="repair_description" id="repairDescription" rows="5" cols="50" minlength="5"><%= locals.repair_description %></textarea>
         </label>
         <label class="form-field" for="repairDate">Repair Date:
-            <input class="form-textbox" type="date" name="repair_date" id="repairDate" required value="<%= locals.repair_date %>" pattern="\d{4}-\d{2}-\d{2}">
+            <input class="form-textbox" type="text" name="repair_date" id="repairDate" required value="<%= locals.repair_date %>" pattern="\d{4}-\d{2}-\d{2}">
         </label>
         <span class="pattern-message">Please make sure all information is correct before submission</span> 
         <input class="submit-button" type="submit" value="Submit">
