@@ -32,7 +32,7 @@
     </ul>
 <% } %>
 
-<form id="add-repair-form" action="/repairs/add" method="post">
+<form id="add-repair-form" action="/repairs/add-repair" method="post">
     <fieldset>
         <label class="form-field" for="repairCost">Cost:
             <input class="form-textbox" type="text" name="repair_cost" id="repairCost" required placeholder="Decimals allowed" value="<%= locals.repair_cost %>" pattern="^\d+(\.\d{1,2})?$">

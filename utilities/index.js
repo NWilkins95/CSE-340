@@ -107,22 +107,19 @@ Util.buildClassificationList = async function (classification_id = null) {
  * Build the repair list HTML
  * **************************************** */
 Util.buildRepairList = async function (repairs) {
-  let list = '<ul class="repair-list">'
+  const vehicle = await invModel.getInventoryById(repairs[0].inv_id)
+  let list = '<div class="repair-vehicle">'
+  list += `<strong>Vehicle:</strong> ${vehicle.inv_make} ${vehicle.inv_model} (${vehicle.inv_year})<br>`
+  list += `<img src="${vehicle.inv_thumbnail}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}" style="max-width:100px;">`
+  list += '</div>'
+
+  list += '<ul class="repair-list">'
   for (const repair of repairs) {
-    // Fetch inventory info for each repair
-    const vehicle = await invModel.getInventoryById(repair.inv_id)
     list += '<li class="repair-item">'
-    if (vehicle && vehicle.rows && vehicle.rows.length > 0) {
-      const v = vehicle.rows[0]
-      list += `<div class="repair-vehicle">
-        <strong>Vehicle:</strong> ${v.inv_make} ${v.inv_model} (${v.inv_year})<br>
-        <img src="${v.inv_thumbnail}" alt="Image of ${v.inv_make} ${v.inv_model}" style="max-width:100px;">
-      </div>`
-    }
     list += `<div class="repair-info">
-      <strong>Repair:</strong> ${repair.repair_type}<br>
       <strong>Date:</strong> ${repair.repair_date}<br>
-      <strong>Cost:</strong> ${repair.repair_cost}
+      <strong>Description:</strong> ${repair.repair_description}<br>
+      <strong>Cost: </strong> $${repair.repair_cost}
     </div>`
     list += '</li>'
   }
