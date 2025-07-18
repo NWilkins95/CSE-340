@@ -9,7 +9,7 @@ const repairsController = require("../controllers/repairsController")
 router.get("/view/:inv_id", utilities.checkLogin, validateAccount.checkAdminAccess, utilities.handleErrors(repairsController.buildRepairsByInventoryId));
 
 // Route to build adding a repair view
-router.get("/add", utilities.checkLogin, validateAccount.checkAdminAccess, utilities.handleErrors(repairsController.buildAddRepair));
+router.get("/add/:inv_id", utilities.checkLogin, validateAccount.checkAdminAccess, utilities.handleErrors(repairsController.buildAddRepair));
 
 // Route to handle adding a repair
 router.post("/add", utilities.checkLogin, validateAccount.checkAdminAccess, utilities.handleErrors(repairsController.addRepair)); // come back and add validation
