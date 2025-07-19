@@ -104,6 +104,30 @@ Util.buildClassificationList = async function (classification_id = null) {
 }
 
 /* ****************************************
+ * Build the repair list HTML
+ * **************************************** */
+Util.buildRepairList = async function (repairs) {
+  const vehicle = await invModel.getInventoryById(repairs[0].inv_id)
+  let list = '<div class="repair-vehicle">'
+  list += `<strong>Vehicle:</strong> ${vehicle.inv_make} ${vehicle.inv_model} (${vehicle.inv_year})<br>`
+  list += `<img src="${vehicle.inv_thumbnail}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}" style="max-width:100px;">`
+  list += '</div>'
+
+  list += '<ul class="repair-list">'
+  for (const repair of repairs) {
+    list += '<li class="repair-item">'
+    list += `<div class="repair-info">
+      <strong>Date:</strong> ${repair.repair_date}<br>
+      <strong>Description:</strong> ${repair.repair_description}<br>
+      <strong>Cost: </strong> $${repair.repair_cost}
+    </div>`
+    list += '</li>'
+  }
+  list += '</ul>'
+  return list
+}
+
+/* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
  * General Error Handling
