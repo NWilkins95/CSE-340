@@ -585,7 +585,7 @@ footer {
 }
 
 .repair-info strong {
-  color: var(--accent-color);
+  color: black;
   font-weight: 600;
   display: inline-block;
   min-width: 100px;
